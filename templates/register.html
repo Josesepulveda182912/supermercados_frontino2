@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="row justify-content-center">
+  <div class="col-12 col-md-6 col-lg-4">
+    <div class="card p-3">
+      <h4 class="mb-3">Registro</h4>
+      <form method="post" action="{{ url_for('register') }}">
+        <div class="mb-2">
+          <label class="form-label">Nombre completo</label>
+          <input class="form-control" name="nombre" required>
+        </div>
+        <div class="mb-2">
+          <label class="form-label">Usuario</label>
+          <input class="form-control" name="usuario" required>
+        </div>
+        <div class="mb-2">
+          <label class="form-label">Contraseña</label>
+          <input type="password" class="form-control" name="password" required>
+        </div>
+        <button class="btn btn-success w-100">Crear cuenta</button>
+      </form>
+      <hr>
+      <p class="small">Si eres administrador usa la cuenta por defecto creada con init_db.py (admin / 1234)</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

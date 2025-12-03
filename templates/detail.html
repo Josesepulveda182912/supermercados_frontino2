@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="mb-3">
+  <a class="btn btn-secondary" href="{{ url_for('user_dashboard') }}">Volver a inicio</a>
+</div>
+<div class="row">
+  <div class="col-12 col-md-6">
+    <div class="card p-3">
+      {% if s['imagen'] %}<img src="{{ url_for('images', filename=s['imagen']) }}" class="img-fluid mb-3">{% endif %}
+      <h4>{{ s['nombre'] }}</h4>
+      <p><strong>Dirección:</strong> {{ s['direccion'] }}</p>
+      <p><strong>Teléfono:</strong> {{ s['telefono'] }}</p>
+      <p><strong>Horario:</strong> {{ s['horario_apertura'] }} - {{ s['horario_cierre'] }}</p>
+      <p><strong>Categoría:</strong> {{ s['categoria'] }}</p>
+    </div>
+  </div>
+  <div class="col-12 col-md-6">
+    <div class="card p-3">
+      <h5>Descripción</h5>
+      <p>{{ s['descripcion'] or 'Sin descripción' }}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

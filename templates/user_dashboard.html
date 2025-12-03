@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h4>Buscar Supermercados</h4>
+  <form class="d-flex" method="get" action="{{ url_for('search') }}">
+    <input class="form-control me-2" name="q" placeholder="Buscar..." value="{{ q if q is defined else '' }}">
+    <select class="form-select me-2" name="categoria">
+      <option value=''>Todas</option>
+      {% for c in categorias %}
+        <option value='{{ c }}' {% if selected_cat is defined and selected_cat==c %}selected{% endif %}>{{ c }}</option>
+      {% endfor %}
+    </select>
+    <button class="btn btn-primary">Buscar</button>
+  </form>
+</div>
+
+<div class="row">
+  {% for s in supermercados %}
+    <div class="col-12 col-md-6 col-lg-4 mb-3">
+      <div class="card p-2 h-100">
+        {% if s['imagen'] %}
+          <img src="{{ url_for('images', filename=s['imagen']) }}" class="img-fluid" style="height:160px;object-fit:cover;">
+        {% else %}
+          <div class="bg-light d-flex align-items-center justify-content-center" style="height:160px;">Sin imagen</div>
+        {% endif %}
+        <h5 class="mt-2">{{ s['nombre'] }}</h5>
+        <p class="mb-1"><strong>Dirección:</strong> {{ s['direccion'] }}</p>
+        <p class="mb-1"><strong>Horario:</strong> {{ s['horario_apertura'] }} - {{ s['horario_cierre'] }}</p>
+        <a class="btn btn-sm btn-outline-primary mt-auto" href="{{ url_for('detail', id=s['id']) }}">Ver detalle</a>
+      </div>
+    </div>
+  {% else %}
+    <p>No hay supermercados.</p>
+  {% endfor %}
+</div>
+{% endblock %}

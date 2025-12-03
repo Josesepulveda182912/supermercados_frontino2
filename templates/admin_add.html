@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h4>Agregar Supermercado</h4>
+  <a class="btn btn-secondary" href="{{ url_for('admin_panel') }}">Volver a inicio</a>
+</div>
+<div class="card p-3">
+  <form method="post">
+    <div class="mb-2"><label class="form-label">Nombre</label><input class="form-control" name="nombre" required></div>
+    <div class="mb-2"><label class="form-label">Dirección</label><input class="form-control" name="direccion" required></div>
+    <div class="mb-2 row">
+      <div class="col"><label class="form-label">Teléfono</label><input class="form-control" name="telefono"></div>
+    </div>
+    <div class="mb-2 row">
+      <div class="col"><label class="form-label">Hora apertura</label><input class="form-control" name="apertura" placeholder="08:00"></div>
+      <div class="col"><label class="form-label">Hora cierre</label><input class="form-control" name="cierre" placeholder="20:00"></div>
+    </div>
+    <div class="mb-2"><label class="form-label">Descripción</label><textarea class="form-control" name="descripcion" rows="3"></textarea></div>
+    <div class="mb-2"><label class="form-label">Nombre de imagen (ej: 1.webp, 5.jpg)</label><input class="form-control" name="imagen" placeholder="Nombre del archivo guardado en /static/images"></div>
+    <button class="btn btn-success">Guardar</button>
+  </form>
+</div>
+{% endblock %}
